@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SyncArena - Hackathon Pitch</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/blood.min.css" id="theme">
+
+    <style>
+      .reveal h1, .reveal h2, .reveal h3 {
+        color: #06b6d4; /* SyncArena Cyan */
+        text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+      }
+      .reveal .accent {
+        color: #8b5cf6; /* SyncArena Violet */
+      }
+      .reveal li {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+        <!-- Slide 1 -->
+        <section>
+          <h1>SyncArena</h1>
+          <h3>Orchestrating the Smart Event Experience</h3>
+          <p>
+            <small>Team Hackathon Pitch Deck</small>
+          </p>
+        </section>
+
+        <!-- Slide 2 -->
+        <section>
+          <h2><span class="accent">The Problem:</span> The 25-Minute Hotdog</h2>
+          <ul>
+            <li class="fragment"><strong>Safety Hazards:</strong> Unmanaged concourse bottlenecks.</li>
+            <li class="fragment"><strong>Lost Revenue:</strong> Fans abandon 15+ minute concession queues.</li>
+            <li class="fragment"><strong>Poor Experience:</strong> You paid $200, but missed the touchdown.</li>
+          </ul>
+        </section>
+
+        <!-- Slide 3 -->
+        <section>
+          <h2><span class="accent">The Solution:</span> Predictive Management</h2>
+          <p>We don't react to crowds. We predict and route them.</p>
+          <ul>
+            <li class="fragment">Real-Time Heatmaps</li>
+            <li class="fragment">Wait Queue Forecasting</li>
+            <li class="fragment">Targeted Routing Broadcasts</li>
+          </ul>
+        </section>
+
+        <!-- Slide 4 -->
+        <section>
+          <section>
+            <h2>Attendee View</h2>
+            <p><strong>Never Miss a Play.</strong> Live wait times and mobile express ordering via PWA.</p>
+          </section>
+          <section>
+            <h2>Venue Ops God-Mode</h2>
+            <p><strong>Complete Control.</strong> Broadcast target evacuations or simulate Halftime rushes from a secure terminal.</p>
+          </section>
+        </section>
+
+        <!-- Slide 5 -->
+        <section>
+          <h2>System Architecture</h2>
+          <p style="font-family: monospace; background: #222; padding: 20px; border-radius: 10px; font-size: 0.7em;">
+            [React Fan App] &lt;--&gt; [Node.js Express API] &lt;--&gt; [React Admin Dashboard]<br/><br/>
+            (Realtime Sync driven by continuous backend polling)
+          </p>
+        </section>
+
+        <!-- Slide 6 -->
+        <section>
+          <h2>Technical Achievements</h2>
+          <ul>
+            <li>Built a full-stack spatial logic engine in 24 hours.</li>
+            <li>Zero heavy map dependencies—built using custom responsive CSS & Math.</li>
+            <li>Simulated IoT sensor streaming via native Node.js intervals.</li>
+          </ul>
+        </section>
+
+        <!-- Slide 7 -->
+        <section>
+          <h2>Business Model & Scalability</h2>
+          <ul>
+            <li><strong>B2B2C:</strong> Sold to arenas via SaaS + micro-cut of increased concession throughput.</li>
+            <li>Free and frictionless (No-download QR access) for attendees.</li>
+            <li>Scales beyond sports to Music Festivals and Comic Conventions.</li>
+          </ul>
+        </section>
+
+        <!-- Slide 8 -->
+        <section>
+          <h2>The Future Roadmap</h2>
+          <ul>
+            <li>Integration with physical CCTV arrays using YOLO counting.</li>
+            <li>Augmented Reality (AR) wayfinding using device cameras.</li>
+            <li>Dynamic pricing based on localized crowd density.</li>
+          </ul>
+        </section>
+
+        <!-- Slide 9 -->
+        <section>
+          <h1>SyncArena</h1>
+          <h3>Let's get back to the game.</h3>
+          <p><small>(We are now open for Q&A)</small></p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.dist.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+      });
+    </script>
+  </body>
+</html>
