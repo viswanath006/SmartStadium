@@ -95,7 +95,7 @@ const AdminDashboard = () => {
         <div className="glass-panel" style={{ padding: '20px', minHeight: '500px', display: 'flex', flexDirection: 'column' }}>
           <h2 style={{ marginTop: 0 }}>Global Telemetry</h2>
           <div style={{ flex: 1, position: 'relative' }}>
-             <StadiumMap zones={data.zones} />
+             <StadiumMap heatPoints={data.heatPoints} />
           </div>
           
           {/* Quick Stats Footer */}

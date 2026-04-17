@@ -63,7 +63,7 @@ const FanDashboard = () => {
           <div className="glass-panel" style={{ padding: '20px', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
             <h2 style={{ marginTop: 0, color: 'var(--accent-cyan)' }}>Live Venue Density</h2>
             <div style={{ flex: 1, position: 'relative' }}>
-               <StadiumMap zones={data.zones} />
+               <StadiumMap heatPoints={data.heatPoints} />
             </div>
           </div>
 

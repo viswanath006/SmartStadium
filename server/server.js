@@ -5,6 +5,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const STADIUM_LAT = 17.4065;
+const STADIUM_LNG = 78.5505;
+
+// Generate simulated Heatmap Layer coordinates
+const generateHeatmapPoints = (intensity) => {
+  // Base 20 points, up to 100 during halftime
+  const points = [];
+  const numPoints = intensity === 'HALFTIME' ? 120 : 40;
+  
+  for (let i = 0; i < numPoints; i++) {
+    points.push({
+      lat: STADIUM_LAT + (Math.random() * 0.003 - 0.0015),
+      lng: STADIUM_LNG + (Math.random() * 0.003 - 0.0015),
+      weight: Math.random() * 3 + 1
+    });
+  }
+  return points;
+};
+
 // In-Memory Database State
 let stadiumState = {
   status: 'NORMAL',
@@ -12,9 +31,8 @@ let stadiumState = {
   zones: [
     { id: 'north-gate', name: 'North Gate', density: 30, maxCapacity: 100 },
     { id: 'south-gate', name: 'South Gate', density: 80, maxCapacity: 100 },
-    { id: 'east-concourse', name: 'East Concourse', density: 40, maxCapacity: 100 },
-    { id: 'west-concourse', name: 'West Concourse', density: 95, maxCapacity: 100 },
   ],
+  heatPoints: generateHeatmapPoints('NORMAL'),
   concessions: [
     { id: 'c1', name: 'Burgers & Co (Sec 102)', waitTime: 5, status: 'open' },
     { id: 'c2', name: 'Beer Stand (Sec 104)', waitTime: 12, status: 'open' },
@@ -31,6 +49,12 @@ let stadiumState = {
 
 // Simulation Layer
 setInterval(() => {
+  if (stadiumState.status === 'NORMAL') {
+      stadiumState.heatPoints = generateHeatmapPoints('NORMAL'); // gentle shift
+  } else if (stadiumState.status === 'HALFTIME') {
+      stadiumState.heatPoints = generateHeatmapPoints('HALFTIME'); // heavy shift
+  }
+
   stadiumState.zones.forEach(z => {
     const change = Math.floor(Math.random() * 11) - 5;
     z.density = Math.max(0, Math.min(100, z.density + change));
@@ -55,6 +79,7 @@ app.get('/api/state', (req, res) => {
 app.post('/api/admin/trigger-halftime', (req, res) => {
   stadiumState.status = 'HALFTIME';
   stadiumState.globalAlert = 'Halftime Approaching. High volumes expected at concessions.';
+  stadiumState.heatPoints = generateHeatmapPoints('HALFTIME');
   
   stadiumState.zones.forEach(z => z.density = Math.min(100, z.density + 40));
   stadiumState.concessions.forEach(c => c.waitTime += 15);
@@ -66,6 +91,7 @@ app.post('/api/admin/trigger-halftime', (req, res) => {
 app.post('/api/admin/clear-alerts', (req, res) => {
   stadiumState.status = 'NORMAL';
   stadiumState.globalAlert = null;
+  stadiumState.heatPoints = generateHeatmapPoints('NORMAL');
   
   stadiumState.zones.forEach(z => z.density = Math.max(10, z.density - 40));
   stadiumState.concessions.forEach(c => c.waitTime = Math.max(2, c.waitTime - 15));
