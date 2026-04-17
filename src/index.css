@@ -1,0 +1,100 @@
+:root {
+  --bg-color: #0b0f19;
+  --panel-bg: rgba(20, 25, 40, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  
+  --accent-cyan: #06b6d4;
+  --accent-violet: #8b5cf6;
+  
+  --status-good: #22c55e;
+  --status-warning: #f59e0b;
+  --status-critical: #ef4444;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top center, #111827 0%, var(--bg-color) 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.glass-button.primary {
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+  border: none;
+}
+
+.glass-button.primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+}
+
+.title-glow {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
